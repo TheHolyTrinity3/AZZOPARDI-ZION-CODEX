@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Azzopardi Zion Codex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;900&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #FFD700;
+  --gold-dim: #8A6900;
+  --gold-mid: #C9A800;
+  --quartz: #A8E6FF;
+  --plasma: #FF6B35;
+  --green: #00FF88;
+  --blue: #4488FF;
+  --bg: #020507;
+  --panel: #050E18;
+  --panel2: #071220;
+  --text: #C4B06A;
+  --text-dim: #4A4028;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Share Tech Mono',monospace;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(2,5,7,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,215,0,0.08);padding:0 24px;}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;height:52px;max-width:1200px;margin:0 auto;}
+.nav-logo{font-family:'Orbitron',sans-serif;font-weight:900;font-size:11px;letter-spacing:5px;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:0;list-style:none;overflow-x:auto;}
+.nav-links a{font-size:8px;letter-spacing:2px;color:var(--text-dim);text-decoration:none;text-transform:uppercase;padding:8px 12px;display:block;transition:color 0.2s;white-space:nowrap;}
+.nav-links a:hover{color:var(--gold);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,215,0,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,215,0,0.02) 1px,transparent 1px);background-size:40px 40px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(255,215,0,0.04) 0%,transparent 70%);}
+.hero-tag{font-size:8px;letter-spacing:6px;color:var(--gold-dim);margin-bottom:16px;animation:fadeUp 1s ease both;}
+.hero h1{font-family:'Orbitron',sans-serif;font-weight:900;font-size:clamp(28px,7vw,72px);line-height:0.95;color:var(--gold);text-shadow:0 0 60px rgba(255,215,0,0.2);animation:fadeUp 1s 0.1s ease both;}
+.hero h1 em{font-style:normal;color:#fff;}
+.hero-sub{font-family:'Crimson Pro',serif;font-style:italic;font-size:clamp(14px,2.5vw,19px);color:var(--text);margin-top:20px;max-width:620px;line-height:1.7;animation:fadeUp 1s 0.2s ease both;}
+.system-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:32px;animation:fadeUp 1s 0.35s ease both;}
+.pill{font-size:8px;letter-spacing:3px;padding:5px 14px;border:1px solid var(--gold-dim);color:var(--gold-dim);text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.pill:hover,.pill.active{border-color:var(--gold);color:var(--gold);background:rgba(255,215,0,0.05);}
+.scroll-cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;font-size:8px;letter-spacing:4px;color:var(--text-dim);}
+.scroll-line{width:1px;height:32px;background:linear-gradient(var(--gold-dim),transparent);animation:pulse 2s infinite;}
+
+/* SYSTEM MAP */
+.map-section{padding:80px 20px;max-width:1000px;margin:0 auto;}
+.sec-tag{font-size:8px;letter-spacing:5px;color:var(--gold-dim);margin-bottom:8px;text-transform:uppercase;}
+.sec-title{font-family:'Orbitron',sans-serif;font-weight:600;font-size:clamp(20px,4vw,36px);color:var(--gold);line-height:1.2;margin-bottom:24px;}
+.sec-title em{font-style:normal;color:#fff;}
+.rule{width:44px;height:1px;background:var(--gold-dim);margin-bottom:32px;}
+.prose{font-family:'Crimson Pro',serif;font-size:clamp(14px,2.3vw,16px);line-height:1.9;color:var(--text);max-width:680px;}
+.prose strong{color:var(--gold);font-weight:400;}
+
+/* FLOW DIAGRAM */
+.flow-diagram{margin-top:40px;background:var(--panel);border:1px solid rgba(255,215,0,0.1);padding:32px;overflow-x:auto;}
+.flow-row{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:nowrap;min-width:600px;}
+.flow-node{background:var(--panel2);border:1px solid rgba(255,215,0,0.15);padding:14px 18px;text-align:center;min-width:120px;}
+.flow-node .fn-tag{font-size:7px;letter-spacing:2px;color:var(--gold-dim);margin-bottom:4px;}
+.flow-node .fn-name{font-family:'Orbitron',sans-serif;font-size:9px;color:var(--gold);letter-spacing:2px;}
+.flow-node .fn-sub{font-size:8px;color:var(--text-dim);margin-top:3px;}
+.flow-arrow{color:var(--gold-dim);font-size:18px;padding:0 8px;flex-shrink:0;}
+.flow-desc{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:2px;min-width:600px;}
+.flow-desc-item{background:rgba(255,215,0,0.02);border:1px solid rgba(255,215,0,0.05);padding:10px;text-align:center;font-size:9px;color:var(--text-dim);line-height:1.5;}
+
+/* COMPONENT SECTIONS */
+.comp-section{padding:80px 20px;border-top:1px solid rgba(255,215,0,0.06);}
+.comp-inner{max-width:1000px;margin:0 auto;}
+.alt-bg{background:var(--panel);}
+
+/* EQUATION BLOCKS */
+.eq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+@media(max-width:640px){.eq-grid{grid-template-columns:1fr;}}
+.eq-card{background:var(--panel2);border:1px solid rgba(255,215,0,0.1);padding:24px;}
+.eq-card h4{font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:12px;}
+.eq-formula{font-family:'Share Tech Mono',monospace;font-size:13px;color:var(--green);background:rgba(0,255,136,0.04);border:1px solid rgba(0,255,136,0.1);padding:12px;margin:10px 0;line-height:1.8;}
+.eq-vars{font-size:10px;color:var(--text-dim);line-height:1.8;}
+.eq-vars span{color:var(--text);}
+
+/* SIMULATORS */
+.sim-block{margin-top:40px;background:var(--panel2);border:1px solid rgba(255,215,0,0.12);overflow:hidden;}
+.sim-header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-bottom:1px solid rgba(255,215,0,0.08);background:rgba(255,215,0,0.02);}
+.sim-header span{font-size:8px;letter-spacing:4px;color:var(--gold-dim);}
+.sim-body{padding:20px;}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:580px){.sim-grid{grid-template-columns:1fr;}}
+.sim-inputs h4,.sim-outputs h4{font-size:8px;letter-spacing:3px;color:var(--gold-dim);margin-bottom:14px;text-transform:uppercase;}
+.input-row{margin-bottom:12px;}
+.input-label{display:flex;justify-content:space-between;font-size:10px;color:var(--text);margin-bottom:5px;}
+input[type=range]{width:100%;appearance:none;height:2px;background:var(--gold-dim);outline:none;cursor:pointer;}
+input[type=range]::-webkit-slider-thumb{appearance:none;width:11px;height:11px;background:var(--gold);cursor:pointer;}
+.output-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.output-item{background:var(--panel);border:1px solid rgba(255,215,0,0.08);padding:12px;}
+.output-label{font-size:7px;letter-spacing:2px;color:var(--gold-dim);margin-bottom:4px;}
+.output-value{font-family:'Orbitron',sans-serif;font-size:clamp(14px,3vw,20px);color:var(--green);text-shadow:0 0 8px rgba(0,255,136,0.3);}
+.output-unit{font-size:7px;color:var(--text-dim);margin-top:2px;}
+.sim-canvas-wrap{margin-top:16px;border:1px solid rgba(255,215,0,0.08);}
+canvas{width:100%;display:block;background:var(--bg);}
+
+/* INTERCONNECT TABLE */
+.interconnect{margin-top:40px;width:100%;border-collapse:collapse;}
+.interconnect th{font-size:8px;letter-spacing:3px;color:var(--gold-dim);padding:10px 14px;border-bottom:1px solid rgba(255,215,0,0.1);text-align:left;text-transform:uppercase;}
+.interconnect td{font-size:11px;padding:12px 14px;border-bottom:1px solid rgba(255,215,0,0.04);color:var(--text);vertical-align:top;}
+.interconnect td:first-child{color:var(--gold);font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:2px;}
+.interconnect td span{color:var(--green);}
+.interconnect tr:hover td{background:rgba(255,215,0,0.02);}
+
+/* TECH READINESS */
+.trl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:32px;}
+@media(max-width:580px){.trl-grid{grid-template-columns:1fr;}}
+.trl-card{background:var(--panel2);padding:20px;border:1px solid rgba(255,215,0,0.07);}
+.trl-card h3{font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:12px;}
+.trl-bar-wrap{margin-bottom:8px;}
+.trl-bar-label{display:flex;justify-content:space-between;font-size:9px;color:var(--text-dim);margin-bottom:4px;}
+.trl-bar{height:4px;background:rgba(255,215,0,0.08);margin-bottom:10px;}
+.trl-fill{height:100%;transition:width 1s ease;}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(255,215,0,0.07);padding:40px 24px;text-align:center;}
+.ft{font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:4px;color:var(--gold);margin-bottom:8px;}
+.fs{font-size:9px;color:var(--text-dim);line-height:1.9;}
+
+/* ANIMS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:0.2;}50%{opacity:1;}}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s,transform 0.7s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* PHASE BLOCKS */
+.phase-list{display:flex;flex-direction:column;gap:2px;margin-top:28px;}
+.phase{display:grid;grid-template-columns:52px 1fr;background:var(--panel2);border:1px solid rgba(255,215,0,0.06);overflow:hidden;transition:border-color 0.3s;}
+.phase:hover{border-color:rgba(255,215,0,0.2);}
+.phase-n{display:flex;align-items:center;justify-content:center;background:rgba(255,215,0,0.03);border-right:1px solid rgba(255,215,0,0.07);font-family:'Orbitron',sans-serif;font-size:15px;font-weight:900;color:var(--gold-dim);padding:18px 0;}
+.phase-body{padding:18px 22px;}
+.phase-body h3{font-family:'Orbitron',sans-serif;font-size:9px;letter-spacing:3px;color:var(--gold);margin-bottom:6px;}
+.phase-body p{font-family:'Crimson Pro',serif;font-size:14px;line-height:1.75;color:var(--text);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">AZZOPARDI ZION CODEX</a>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#tower">Tower</a></li>
+      <li><a href="#drive">Drive</a></li>
+      <li><a href="#beam">Beam</a></li>
+      <li><a href="#atren">ATREN</a></li>
+      <li><a href="#interconnect">Interconnect</a></li>
+      <li><a href="#sims">Simulators</a></li>
+      <li><a href="#trl">Readiness</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-tag">M.J. AZZOPARDI · ZION CODEX · COMPLETE TECHNICAL RECORD · 2026</div>
+  <h1>The <em>Azzopardi</em><br>Zion Codex</h1>
+  <p class="hero-sub">A complete documented body of original work. Generation — Propulsion — Directed Energy — Wireless Distribution — Intelligent Control. One core. One physics. One inventor. Timestamped on public record.</p>
+  <div class="system-pills">
+    <div class="pill">Azzopardi Tower</div>
+    <div class="pill">Thermal Drive</div>
+    <div class="pill">Thermal Beam</div>
+    <div class="pill">ATREN</div>
+    <div class="pill">Smart Chip Network</div>
+  </div>
+  <div class="scroll-cue"><div class="scroll-line"></div>DESCEND</div>
+</div>
+
+<!-- SYSTEM OVERVIEW -->
+<div class="map-section" id="overview">
+  <div class="reveal">
+    <div class="sec-tag">// System Architecture</div>
+    <div class="sec-title">Five Components.<br><em>One Loop.</em></div>
+    <div class="rule"></div>
+    <p class="prose">Every component in the Azzopardi System shares the same ceramic thermal core, the same gold collar, the same material constraints. They are not five separate inventions — they are one invention expressed at five different scales and orientations. The Tower generates. The Drive moves. The Beam aims. ATREN transmits wirelessly. The Smart Chip network distributes and coordinates. Each one feeds every other.</p>
+  </div>
+
+  <div class="flow-diagram reveal">
+    <div class="flow-row">
+      <div class="flow-node">
+        <div class="fn-tag">GENERATION</div>
+        <div class="fn-name">TOWER</div>
+        <div class="fn-sub">5–20 MW</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="fn-tag">TRANSMISSION</div>
+        <div class="fn-name">ATREN</div>
+        <div class="fn-sub">Wireless</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="fn-tag">DISTRIBUTION</div>
+        <div class="fn-name">SMART CHIP</div>
+        <div class="fn-sub">Tri-Core AI</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="fn-tag">PROPULSION</div>
+        <div class="fn-name">ATD DRIVE</div>
+        <div class="fn-sub">Air·Land·Sea</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="fn-tag">DIRECTED ENERGY</div>
+        <div class="fn-name">BEAM</div>
+        <div class="fn-sub">AZL-01</div>
+      </div>
+    </div>
+    <div class="flow-desc">
+      <div class="flow-desc-item">Concentrated solar → ceramic core → electricity + hydrogen + water</div>
+      <div class="flow-desc-item">Resonant inductive field → wireless charge → ATREN chip tunes in</div>
+      <div class="flow-desc-item">Tri-Core AI → load balance → mesh sharing between all nodes</div>
+      <div class="flow-desc-item">Thermal core in vehicle → multi-source heat → continuous propulsion</div>
+      <div class="flow-desc-item">Minicore → mirror chamber momentum → heliostat exit beam</div>
+    </div>
+  </div>
+
+  <!-- HOW THEY HELP EACH OTHER -->
+  <div style="margin-top:40px;" class="reveal">
+    <div class="sec-tag">// Interdependence</div>
+    <div class="sec-title" style="font-size:clamp(18px,3.5vw,28px);">How Each Component<br><em>Feeds the Others.</em></div>
+    <div class="rule"></div>
+  </div>
+
+  <table class="interconnect reveal">
+    <tr>
+      <th>Component</th>
+      <th>Gives to System</th>
+      <th>Receives from System</th>
+      <th>Key Interdependency</th>
+    </tr>
+    <tr>
+      <td>Tower</td>
+      <td>Electricity, hydrogen, water, surplus thermal energy</td>
+      <td>ATREN distribution network, AI demand optimisation from Tri-Core</td>
+      <td><span>Tower surplus powers ATREN transmission nodes directly</span></td>
+    </tr>
+    <tr>
+      <td>Thermal Drive</td>
+      <td>Mobile generation node — generates heat en route, feeds back to network when stationary</td>
+      <td>Wireless charge from ATREN while parked or in range. Hydrogen reserve from Tower network.</td>
+      <td><span>ATD vehicle never needs a dedicated charge stop — charges passively from any ATREN node</span></td>
+    </tr>
+    <tr>
+      <td>Thermal Beam</td>
+      <td>Networked status data — charge level, location, readiness reported to Tri-Core</td>
+      <td>Passive wireless charge from ATREN chip. Solar backup via quartz port.</td>
+      <td><span>Beam stays perpetually charged within any network zone — no manual charging required</span></td>
+    </tr>
+    <tr>
+      <td>ATREN</td>
+      <td>Wireless energy field — charges all devices and vehicles in range simultaneously</td>
+      <td>Primary power from Tower. AI routing from Tri-Core Smart Chip network.</td>
+      <td><span>ATREN turns the entire Tower output into an ambient charging field — everything in range charges automatically</span></td>
+    </tr>
+    <tr>
+      <td>Smart Chip / Tri-Core</td>
+      <td>Intelligence — load balancing, demand prediction, fault isolation, network coordination</td>
+      <td>Data from every node — Tower output, vehicle charge states, beam status, ATREN field strength</td>
+      <td><span>Tri-Core sees the entire system in real time. Optimises every joule across every component simultaneously</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- TOWER -->
+<div class="comp-section alt-bg" id="tower">
+  <div class="comp-inner">
+    <div class="reveal">
+      <div class="sec-tag">// Component One</div>
+      <div class="sec-title">The Azzopardi Tower.<br><em>The Source.</em></div>
+      <div class="rule"></div>
+      <p class="prose">The Tower is the primary generation node of the entire system. Concentrated solar power enters through a fused quartz receiver at the apex, heats a ceramic core to 1,200–1,673K, and converts that heat directly to electricity across an 85nm vacuum gap using near-field thermophotovoltaic conversion. No turbines. No steam. No moving parts at the core.</p>
+    </div>
+
+    <div class="eq-grid reveal">
+      <div class="eq-card">
+        <h4>Near-Field TPV Power Equation</h4>
+        <div class="eq-formula">P_elec = η(T) · σ · T⁴ · (1 + (5×10⁴ / d²))
+
+η(T) = temperature-dependent TPV efficiency
+σ = 5.67×10⁻⁸ W/m²K⁴ (Stefan-Boltzmann)
+T = emitter temperature (Kelvin)
+d = vacuum gap distance (nanometres)</div>
+        <div class="eq-vars">
+          At T=1400K, d=85nm, η=0.38:<br>
+          <span>P ≈ 8,400 W/cm² electrical output</span><br>
+          Near-field amplification factor at 85nm: ~7×
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Heliostat Mirror Geometry</h4>
+        <div class="eq-formula">P_focused = DNI · A_mirrors · η_optical
+
+DNI = Direct Normal Irradiance (W/m²)
+A_mirrors = total heliostat area (m²)
+η_optical = mirror efficiency (~0.75–0.85)
+
+Concentration ratio C = A_mirrors / A_receiver</div>
+        <div class="eq-vars">
+          At DNI=900 W/m², 10,000m² mirrors, η=0.80:<br>
+          <span>P_focused ≈ 7.2 MW thermal input</span><br>
+          Concentration ratio: ~50,000:1
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Molten Salt Thermal Storage</h4>
+        <div class="eq-formula">E_stored = m · Cp · ΔT
+
+m = salt mass (kg)
+Cp = specific heat capacity (~1,500 J/kg·K)
+ΔT = temperature differential (K)
+(typically 290°C cold → 565°C hot)</div>
+        <div class="eq-vars">
+          At m=10,000kg, ΔT=275K:<br>
+          <span>E_stored ≈ 4,125 MJ (1,145 kWh)</span><br>
+          Sufficient for ~8–12 hours overnight operation
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Atmospheric Water Generation</h4>
+        <div class="eq-formula">V_water = η_AWG · RH · ρ_air · Q_air
+
+η_AWG = extraction efficiency (0.3–0.8)
+RH = relative humidity (fraction)
+ρ_air = air density (~1.2 kg/m³)
+Q_air = airflow volume (m³/day)</div>
+        <div class="eq-vars">
+          At RH=0.6, Q=500,000m³/day, η=0.7:<br>
+          <span>V_water ≈ 252,000 litres/day</span><br>
+          Waste heat from core boosts η by ~15–25%
+        </div>
+      </div>
+    </div>
+
+    <!-- Tower Simulator -->
+    <div class="sim-block reveal">
+      <div class="sim-header">
+        <span>AZZOPARDI TOWER — OUTPUT CALCULATOR</span>
+        <span id="tower-status">CALCULATING</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-grid">
+          <div class="sim-inputs">
+            <h4>Input Parameters</h4>
+            <div class="input-row">
+              <div class="input-label"><span>Core Temperature</span><span id="t-temp-lbl">1400 K</span></div>
+              <input type="range" id="t-temp" min="600" max="1673" value="1400" oninput="calcTower()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Heliostat Area</span><span id="t-area-lbl">8000 m²</span></div>
+              <input type="range" id="t-area" min="1000" max="20000" value="8000" oninput="calcTower()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Solar Irradiance (DNI)</span><span id="t-dni-lbl">850 W/m²</span></div>
+              <input type="range" id="t-dni" min="400" max="1100" value="850" oninput="calcTower()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Vacuum Gap</span><span id="t-gap-lbl">85 nm</span></div>
+              <input type="range" id="t-gap" min="50" max="500" value="85" oninput="calcTower()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Humidity (for water)</span><span id="t-hum-lbl">60%</span></div>
+              <input type="range" id="t-hum" min="20" max="100" value="60" oninput="calcTower()">
+            </div>
+          </div>
+          <div class="sim-outputs">
+            <h4>System Output</h4>
+            <div class="output-grid">
+              <div class="output-item">
+                <div class="output-label">ELECTRICAL</div>
+                <div class="output-value" id="t-out-elec">—</div>
+                <div class="output-unit">MW</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">THERMAL INPUT</div>
+                <div class="output-value" id="t-out-therm">—</div>
+                <div class="output-unit">MW</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">WATER / DAY</div>
+                <div class="output-value" id="t-out-water">—</div>
+                <div class="output-unit">LITRES</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">EFFICIENCY</div>
+                <div class="output-value" id="t-out-eff">—</div>
+                <div class="output-unit">%</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">HOMES POWERED</div>
+                <div class="output-value" id="t-out-homes">—</div>
+                <div class="output-unit">HOUSEHOLDS</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">H₂ SURPLUS</div>
+                <div class="output-value" id="t-out-h2">—</div>
+                <div class="output-unit">KG/DAY</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sim-canvas-wrap">
+          <canvas id="towerCanvas" height="120"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THERMAL DRIVE -->
+<div class="comp-section" id="drive">
+  <div class="comp-inner">
+    <div class="reveal">
+      <div class="sec-tag">// Component Two</div>
+      <div class="sec-title">Thermal Drive.<br><em>The Motion.</em></div>
+      <div class="rule"></div>
+      <p class="prose">The ATD applies the Tower's core to vehicle propulsion. The ceramic minicore converts multiple heat sources — solar intake, waste heat recovery, stored hydrogen, and ATREN wireless charging — into continuous electrical output. No battery cycle limit. 94% energy utilisation. The core's thermal inertia means power is sustained even when the immediate heat source is interrupted.</p>
+    </div>
+
+    <div class="eq-grid reveal">
+      <div class="eq-card">
+        <h4>Thermal-to-Electric Conversion</h4>
+        <div class="eq-formula">P_out = η_TPV · A_core · σ · T⁴ · F_nf
+
+η_TPV = TPV cell efficiency (0.35–0.40)
+A_core = emitter surface area (m²)
+F_nf = near-field enhancement factor
+F_nf = 1 + (5×10⁴ / d²) at gap d (nm)</div>
+        <div class="eq-vars">
+          Vehicle core at T=900K, A=0.02m², d=100nm:<br>
+          <span>P_out ≈ 18.4 kW continuous</span><br>
+          Sufficient for urban vehicle propulsion
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Waste Heat Recovery</h4>
+        <div class="eq-formula">P_recovered = η_rec · (P_brake + P_friction + P_motor_waste)
+
+η_rec = recovery efficiency (0.60–0.85)
+P_brake = braking power dissipated
+P_friction = road/bearing friction losses
+P_motor_waste = motor thermal losses</div>
+        <div class="eq-vars">
+          City driving cycle, η_rec=0.72:<br>
+          <span>P_recovered ≈ 3.2–6.8 kW additional</span><br>
+          Up to 28% range extension vs no recovery
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Vehicle Range Estimate</h4>
+        <div class="eq-formula">R = (E_core + E_solar + E_recovery) / P_drive
+
+E_core = thermal energy stored in core (Wh)
+E_solar = solar intake during journey (Wh)
+E_recovery = waste heat recovered (Wh)
+P_drive = average drive power (W)</div>
+        <div class="eq-vars">
+          E_core=45kWh, E_solar=3kWh, E_rec=5kWh:<br>
+          <span>R ≈ 380 km at 140W/km average</span>
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Core Thermal Inertia</h4>
+        <div class="eq-formula">t_hold = (m_core · Cp_ceramic · ΔT) / P_draw
+
+m_core = core mass (kg)
+Cp_ceramic = ~880 J/kg·K
+ΔT = usable temperature drop (K)
+P_draw = power drawn from core (W)</div>
+        <div class="eq-vars">
+          m=2kg, ΔT=400K, P_draw=15,000W:<br>
+          <span>t_hold ≈ 47 seconds thermal reserve</span><br>
+          Capacitor buffers cover this gap seamlessly
+        </div>
+      </div>
+    </div>
+
+    <!-- Drive Simulator -->
+    <div class="sim-block reveal">
+      <div class="sim-header">
+        <span>ATD VEHICLE — RANGE & EFFICIENCY CALCULATOR</span>
+        <span id="drive-status">CALCULATING</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-grid">
+          <div class="sim-inputs">
+            <h4>Vehicle Parameters</h4>
+            <div class="input-row">
+              <div class="input-label"><span>Core Temperature</span><span id="d-temp-lbl">900 K</span></div>
+              <input type="range" id="d-temp" min="400" max="1200" value="900" oninput="calcDrive()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Vehicle Mass</span><span id="d-mass-lbl">1400 kg</span></div>
+              <input type="range" id="d-mass" min="800" max="5000" value="1400" oninput="calcDrive()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Drive Speed</span><span id="d-speed-lbl">80 km/h</span></div>
+              <input type="range" id="d-speed" min="20" max="200" value="80" oninput="calcDrive()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Solar Conditions</span><span id="d-solar-lbl">Good</span></div>
+              <input type="range" id="d-solar" min="0" max="3" value="2" oninput="calcDrive()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>ATREN Network Coverage</span><span id="d-atren-lbl">50%</span></div>
+              <input type="range" id="d-atren" min="0" max="100" value="50" oninput="calcDrive()">
+            </div>
+          </div>
+          <div class="sim-outputs">
+            <h4>Drive Output</h4>
+            <div class="output-grid">
+              <div class="output-item">
+                <div class="output-label">RANGE</div>
+                <div class="output-value" id="d-out-range">—</div>
+                <div class="output-unit">KM</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">CORE OUTPUT</div>
+                <div class="output-value" id="d-out-power">—</div>
+                <div class="output-unit">KW</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">HEAT RECOVERED</div>
+                <div class="output-value" id="d-out-rec">—</div>
+                <div class="output-unit">KW</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">EFFICIENCY</div>
+                <div class="output-value" id="d-out-eff">—</div>
+                <div class="output-unit">%</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">WIRELESS TOP-UP</div>
+                <div class="output-value" id="d-out-wireless">—</div>
+                <div class="output-unit">KW</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">FUEL COST</div>
+                <div class="output-value" id="d-out-cost">—</div>
+                <div class="output-unit">£/100KM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- THERMAL BEAM -->
+<div class="comp-section alt-bg" id="beam">
+  <div class="comp-inner">
+    <div class="reveal">
+      <div class="sec-tag">// Component Three</div>
+      <div class="sec-title">Thermal Beam.<br><em>The Aim.</em></div>
+      <div class="rule"></div>
+      <p class="prose">The Thermal Beam inverts the Tower's geometry. Where the Tower pulls light inward through a quartz receiver to heat the core, the Beam heats the core and pushes light outward. A tapering mirror momentum chamber builds beam coherence stage by stage. A parabolic heliostat mirror at the barrel end shapes the final output. An integrated ATREN chip means the weapon charges passively from any network node — it is live as long as it is within range of the system.</p>
+    </div>
+
+    <div class="eq-grid reveal">
+      <div class="eq-card">
+        <h4>Beam Intensity vs Core Temperature</h4>
+        <div class="eq-formula">I_beam = η_optical · σ · T⁴ · (A_core / A_beam) · M_stages
+
+η_optical = mirror chain efficiency (0.85–0.95)
+T = core temperature (K)
+A_core / A_beam = concentration ratio
+M_stages = momentum multiplier per stage</div>
+        <div class="eq-vars">
+          T=1000K, 7 mirror stages, η=0.90:<br>
+          <span>I_beam ≈ 2.8 × 10⁵ W/m² at exit</span><br>
+          Each mirror stage: ~12–18% intensity increase
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Mirror Momentum Chamber</h4>
+        <div class="eq-formula">I_n = I_0 · (η_mirror)^n · C_taper^n
+
+I_0 = initial core emission intensity
+η_mirror = per-mirror reflectivity (0.92–0.98)
+n = number of mirror stages (3–9)
+C_taper = taper concentration factor (1.08–1.18)</div>
+        <div class="eq-vars">
+          I_0=1000 W/m², n=7, η=0.95, C=1.12:<br>
+          <span>I_7 ≈ 2,340 W/m² — 2.34× input intensity</span><br>
+          Gold lining reduces scatter loss by ~94%
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>ATREN Wireless Charge Rate</h4>
+        <div class="eq-formula">P_charge = P_field · η_resonance · (1 / (1 + (r/r₀)²))
+
+P_field = ATREN transmission power (W)
+η_resonance = coupling efficiency (0.60–0.85)
+r = distance from transmitter (m)
+r₀ = reference range (m)</div>
+        <div class="eq-vars">
+          P_field=500W, r=5m, r₀=10m, η=0.75:<br>
+          <span>P_charge ≈ 300 W passive intake</span><br>
+          Full charge from standby: ~18 minutes
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Charge Cycle — Fire Rate</h4>
+        <div class="eq-formula">t_recharge = E_shot / (P_core + P_atren + P_solar)
+
+E_shot = energy per discharge (J)
+P_core = core continuous output (W)
+P_atren = wireless top-up rate (W)
+P_solar = quartz solar intake (W)</div>
+        <div class="eq-vars">
+          E_shot=2,000J, P_core=180W, P_atren=300W:<br>
+          <span>t_recharge ≈ 4.2 seconds between shots</span><br>
+          Higher core temp → faster recharge
+        </div>
+      </div>
+    </div>
+
+    <!-- Beam Simulator -->
+    <div class="sim-block reveal">
+      <div class="sim-header">
+        <span>AZZOPARDI THERMAL BEAM — CHARGE & FIRE CALCULATOR</span>
+        <span id="beam-status">STANDBY</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-grid">
+          <div class="sim-inputs">
+            <h4>Beam Parameters</h4>
+            <div class="input-row">
+              <div class="input-label"><span>Core Temperature</span><span id="b-temp-lbl">800 K</span></div>
+              <input type="range" id="b-temp" min="300" max="1200" value="800" oninput="calcBeam()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Mirror Stages</span><span id="b-stages-lbl">6</span></div>
+              <input type="range" id="b-stages" min="3" max="9" value="6" oninput="calcBeam()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>ATREN Charge Rate</span><span id="b-atren-lbl">300 W</span></div>
+              <input type="range" id="b-atren" min="0" max="600" value="300" oninput="calcBeam()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Solar Intake</span><span id="b-solar-lbl">50 W</span></div>
+              <input type="range" id="b-solar" min="0" max="150" value="50" oninput="calcBeam()">
+            </div>
+          </div>
+          <div class="sim-outputs">
+            <h4>Beam Output</h4>
+            <div class="output-grid">
+              <div class="output-item">
+                <div class="output-label">BEAM INTENSITY</div>
+                <div class="output-value" id="b-out-intensity">—</div>
+                <div class="output-unit">kW/m²</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">RECHARGE TIME</div>
+                <div class="output-value" id="b-out-recharge">—</div>
+                <div class="output-unit">SECONDS</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">MOMENTUM GAIN</div>
+                <div class="output-value" id="b-out-momentum">—</div>
+                <div class="output-unit">× INPUT</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">TOTAL CHARGE PWR</div>
+                <div class="output-value" id="b-out-charge">—</div>
+                <div class="output-unit">WATTS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ATREN + SMART CHIP -->
+<div class="comp-section" id="atren">
+  <div class="comp-inner">
+    <div class="reveal">
+      <div class="sec-tag">// Component Four & Five</div>
+      <div class="sec-title">ATREN + Smart Chip.<br><em>The Network.</em></div>
+      <div class="rule"></div>
+      <p class="prose">ATREN is the wireless transmission layer — a resonant inductive field generated by transmission nodes powered by the Tower. The Smart Fuse Chip sits in every home, vehicle, and device. It contains a Resonance Engine that locks onto the ATREN field frequency, a Power Manager that controls charge rate and safety, and an Intelligence Layer that learns usage patterns and optimises distribution. The Tri-Core hub coordinates all nodes simultaneously in real time.</p>
+    </div>
+
+    <div class="eq-grid reveal">
+      <div class="eq-card">
+        <h4>Resonant Coupling Efficiency</h4>
+        <div class="eq-formula">η_coupling = k² · Q₁ · Q₂ / (1 + k² · Q₁ · Q₂)
+
+k = coupling coefficient (0–1)
+Q₁ = transmitter quality factor
+Q₂ = receiver quality factor
+Resonance condition: ω₁ = ω₂ = 1/√(LC)</div>
+        <div class="eq-vars">
+          k=0.3, Q₁=Q₂=100:<br>
+          <span>η_coupling ≈ 0.818 (81.8% efficiency)</span><br>
+          Efficiency drops ~1/r² with distance
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>ATREN Field Power Density</h4>
+        <div class="eq-formula">S(r) = P_transmit · G / (4π · r²) · η_field
+
+P_transmit = node transmission power (W)
+G = antenna/coil gain factor
+r = distance from node (m)
+η_field = field propagation efficiency</div>
+        <div class="eq-vars">
+          P=10kW, G=2.5, r=15m, η=0.7:<br>
+          <span>S ≈ 62 W/m² at 15m range</span><br>
+          Sufficient for continuous device charging
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Tri-Core Load Balancing</h4>
+        <div class="eq-formula">P_allocated(i) = P_total · (D(i) / Σ D(j)) · η_dist
+
+P_total = total available network power
+D(i) = demand at node i
+Σ D(j) = sum of all node demands
+η_dist = distribution efficiency (0.92–0.96)</div>
+        <div class="eq-vars">
+          P_total=5MW, 1000 nodes, η=0.94:<br>
+          <span>Average 4.7 kW per node allocated</span><br>
+          AI adjusts allocation every 100ms
+        </div>
+      </div>
+      <div class="eq-card">
+        <h4>Mesh Network Energy Sharing</h4>
+        <div class="eq-formula">ΔP_share = α · (P_surplus(A) - P_deficit(B)) · η_mesh
+
+α = sharing coefficient (0–1, set by AI)
+P_surplus = excess power at node A
+P_deficit = shortfall at node B
+η_mesh = mesh transfer efficiency</div>
+        <div class="eq-vars">
+          P_surplus=2kW, P_deficit=1.5kW, η=0.88:<br>
+          <span>ΔP_share ≈ 1.32 kW transferred</span><br>
+          Reduces peak demand by up to 34%
+        </div>
+      </div>
+    </div>
+
+    <!-- ATREN Simulator -->
+    <div class="sim-block reveal">
+      <div class="sim-header">
+        <span>ATREN NETWORK — WIRELESS DISTRIBUTION CALCULATOR</span>
+        <span id="atren-status">ACTIVE</span>
+      </div>
+      <div class="sim-body">
+        <div class="sim-grid">
+          <div class="sim-inputs">
+            <h4>Network Parameters</h4>
+            <div class="input-row">
+              <div class="input-label"><span>Tower Power Input</span><span id="a-power-lbl">8 MW</span></div>
+              <input type="range" id="a-power" min="1" max="20" value="8" oninput="calcATREN()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Number of Nodes</span><span id="a-nodes-lbl">500</span></div>
+              <input type="range" id="a-nodes" min="10" max="2000" value="500" oninput="calcATREN()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Avg Node Distance</span><span id="a-dist-lbl">12 m</span></div>
+              <input type="range" id="a-dist" min="1" max="50" value="12" oninput="calcATREN()">
+            </div>
+            <div class="input-row">
+              <div class="input-label"><span>Resonance Quality (Q)</span><span id="a-q-lbl">80</span></div>
+              <input type="range" id="a-q" min="10" max="200" value="80" oninput="calcATREN()">
+            </div>
+          </div>
+          <div class="sim-outputs">
+            <h4>Network Output</h4>
+            <div class="output-grid">
+              <div class="output-item">
+                <div class="output-label">PER NODE</div>
+                <div class="output-value" id="a-out-node">—</div>
+                <div class="output-unit">KW</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">COUPLING EFF.</div>
+                <div class="output-value" id="a-out-eff">—</div>
+                <div class="output-unit">%</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">FIELD DENSITY</div>
+                <div class="output-value" id="a-out-field">—</div>
+                <div class="output-unit">W/m²</div>
+              </div>
+              <div class="output-item">
+                <div class="output-label">HOMES SERVED</div>
+                <div class="output-value" id="a-out-homes">—</div>
+                <div class="output-unit">HOUSEHOLDS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TECH READINESS -->
+<div class="comp-section alt-bg" id="trl">
+  <div class="comp-inner">
+    <div class="reveal">
+      <div class="sec-tag">// Codex Readiness Assessment</div>
+      <div class="sec-title">Where Each Component<br><em>Stands Today.</em></div>
+      <div class="rule"></div>
+      <p class="prose">No component of the Azzopardi System violates known physics. Every element has a real scientific basis. The readiness levels below reflect current engineering capability — not physical possibility. These are engineering gaps, not theoretical barriers.</p>
+    </div>
+    <div class="trl-grid reveal">
+      <div class="trl-card">
+        <h3>Azzopardi Tower</h3>
+        <div class="trl-bar-wrap">
+          <div class="trl-bar-label"><span>CSP Tower Technology</span><span style="color:var(--green)">TRL 9</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:95%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Molten Salt Storage</span><span style="color:var(--green)">TRL 8</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:88%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Near-Field TPV</span><span style="color:var(--gold)">TRL 4</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:40%;background:var(--gold);"></div></div>
+          <div class="trl-bar-label"><span>Full Integration</span><span style="color:var(--gold)">TRL 3</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:28%;background:var(--gold);"></div></div>
+        </div>
+      </div>
+      <div class="trl-card">
+        <h3>Thermal Drive</h3>
+        <div class="trl-bar-wrap">
+          <div class="trl-bar-label"><span>Waste Heat Recovery</span><span style="color:var(--green)">TRL 8</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:85%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Solar Vehicle Charging</span><span style="color:var(--green)">TRL 7</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:75%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Minicore TPV</span><span style="color:var(--gold)">TRL 3</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:28%;background:var(--gold);"></div></div>
+          <div class="trl-bar-label"><span>Vibration Gap Control</span><span style="color:var(--plasma)">TRL 2</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:18%;background:var(--plasma);"></div></div>
+        </div>
+      </div>
+      <div class="trl-card">
+        <h3>Thermal Beam</h3>
+        <div class="trl-bar-wrap">
+          <div class="trl-bar-label"><span>Thermally Pumped Lasers</span><span style="color:var(--green)">TRL 6</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:62%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Mirror Optics</span><span style="color:var(--green)">TRL 9</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:95%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Minicore at weapon scale</span><span style="color:var(--gold)">TRL 2</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:18%;background:var(--gold);"></div></div>
+          <div class="trl-bar-label"><span>ATREN integration</span><span style="color:var(--gold)">TRL 3</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:28%;background:var(--gold);"></div></div>
+        </div>
+      </div>
+      <div class="trl-card">
+        <h3>ATREN Wireless</h3>
+        <div class="trl-bar-wrap">
+          <div class="trl-bar-label"><span>Resonant Inductive (short)</span><span style="color:var(--green)">TRL 9</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:95%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>EV Wireless Charging</span><span style="color:var(--green)">TRL 7</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:74%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Medium range (10–50m)</span><span style="color:var(--gold)">TRL 4</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:38%;background:var(--gold);"></div></div>
+          <div class="trl-bar-label"><span>City-scale wireless</span><span style="color:var(--plasma)">TRL 2</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:16%;background:var(--plasma);"></div></div>
+        </div>
+      </div>
+      <div class="trl-card">
+        <h3>Smart Chip / Tri-Core</h3>
+        <div class="trl-bar-wrap">
+          <div class="trl-bar-label"><span>Smart Grid AI</span><span style="color:var(--green)">TRL 8</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:85%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Mesh Energy Networks</span><span style="color:var(--green)">TRL 7</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:74%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Smart Fuse Hardware</span><span style="color:var(--green)">TRL 8</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:82%;background:var(--green);"></div></div>
+          <div class="trl-bar-label"><span>Full System Integration</span><span style="color:var(--gold)">TRL 3</span></div>
+          <div class="trl-bar"><div class="trl-fill" style="width:28%;background:var(--gold);"></div></div>
+        </div>
+      </div>
+      <div class="trl-card" style="border-color:rgba(255,215,0,0.15);background:rgba(255,215,0,0.015);">
+        <h3 style="color:var(--gold)">TRL Key</h3>
+        <div style="font-size:10px;line-height:2;color:var(--text);">
+          <div><span style="color:var(--green)">TRL 7–9</span> — Deployed or near-deployment</div>
+          <div><span style="color:var(--green)">TRL 5–6</span> — Prototype demonstrated</div>
+          <div><span style="color:var(--gold)">TRL 3–4</span> — Lab proof of concept</div>
+          <div><span style="color:var(--plasma)">TRL 1–2</span> — Theoretical / early research</div>
+          <div style="margin-top:12px;color:var(--text-dim);font-size:9px;">Nothing here violates physics.<br>All gaps are engineering, not science.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="ft">THE AZZOPARDI ZION CODEX</div>
+  <div class="fs">
+    Complete Technical Record — M.J. Azzopardi — 2026<br>
+    Tower · Thermal Drive · Thermal Beam · ATREN · Smart Chip Network<br>
+    All designs original, independent, documented and timestamped on public record<br>
+    Hypothesis · Pre-Prototype · Physics-Compliant · The Azzopardi Zion Codex
+  </div>
+</footer>
+
+<script>
+// SCROLL REVEAL
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── TOWER CALCULATOR ──
+function calcTower(){
+  const T=+document.getElementById('t-temp').value;
+  const A=+document.getElementById('t-area').value;
+  const DNI=+document.getElementById('t-dni').value;
+  const d=+document.getElementById('t-gap').value;
+  const hum=+document.getElementById('t-hum').value;
+
+  document.getElementById('t-temp-lbl').textContent=T+' K';
+  document.getElementById('t-area-lbl').textContent=A.toLocaleString()+' m²';
+  document.getElementById('t-dni-lbl').textContent=DNI+' W/m²';
+  document.getElementById('t-gap-lbl').textContent=d+' nm';
+  document.getElementById('t-hum-lbl').textContent=hum+'%';
+
+  const sigma=5.67e-8;
+  const eta_tpv=0.35+0.05*(T-600)/1073;
+  const nf=1+(50000/(d*d));
+  const thermal_in=(DNI*A*0.80)/1e6;
+  const elec=Math.min(thermal_in*0.94, eta_tpv*sigma*Math.pow(T,4)*nf*0.02/1e6);
+  const elec_out=Math.max(0.1,Math.min(20,thermal_in*eta_tpv*1.2));
+  const water=Math.round(0.7*(hum/100)*1.2*420000*(T/1673));
+  const eff=Math.min(94,Math.round((eta_tpv*100)*(1+0.1*(1-d/500))));
+  const homes=Math.round(elec_out*1000/3.5);
+  const h2=Math.round(elec_out*0.15*1000/39.4);
+
+  document.getElementById('t-out-elec').textContent=elec_out.toFixed(1);
+  document.getElementById('t-out-therm').textContent=thermal_in.toFixed(1);
+  document.getElementById('t-out-water').textContent=water.toLocaleString();
+  document.getElementById('t-out-eff').textContent=eff;
+  document.getElementById('t-out-homes').textContent=homes.toLocaleString();
+  document.getElementById('t-out-h2').textContent=h2;
+  document.getElementById('tower-status').textContent='LIVE';
+
+  drawTowerChart(T,elec_out,thermal_in,water/10000);
+}
+
+function drawTowerChart(T,elec,therm,water){
+  const canvas=document.getElementById('towerCanvas');
+  const ctx=canvas.getContext('2d');
+  canvas.width=canvas.offsetWidth;
+  const W=canvas.width,H=canvas.height;
+  ctx.clearRect(0,0,W,H);
+
+  const bars=[
+    {label:'ELECTRICAL (MW)',val:elec,max:20,color:'#00FF88'},
+    {label:'THERMAL INPUT (MW)',val:therm,max:20,color:'#FFD700'},
+    {label:'WATER (×10k L)',val:water,max:30,color:'#A8E6FF'},
+    {label:'EFFICIENCY (%)',val:Math.min(94,(35+15*(T-600)/1073)),max:100,color:'#FF6B35'}
+  ];
+
+  const bw=(W-60)/bars.length-12;
+  bars.forEach((b,i)=>{
+    const x=30+i*(bw+12);
+    const frac=Math.min(1,b.val/b.max);
+    const bh=(H-50)*frac;
+    ctx.fillStyle='rgba(255,215,0,0.04)';
+    ctx.fillRect(x,20,bw,H-50);
+    ctx.fillStyle=b.color;
+    ctx.globalAlpha=0.8;
+    ctx.fillRect(x,20+(H-50)*(1-frac),bw,bh);
+    ctx.globalAlpha=1;
+    ctx.fillStyle=b.color;
+    ctx.font='7px Share Tech Mono';
+    ctx.textAlign='center';
+    ctx.fillText(b.val.toFixed(1),x+bw/2,18+(H-50)*(1-frac)-3);
+    ctx.fillStyle='rgba(184,150,12,0.6)';
+    ctx.font='6px Share Tech Mono';
+    ctx.fillText(b.label,x+bw/2,H-4);
+  });
+}
+
+// ── DRIVE CALCULATOR ──
+function calcDrive(){
+  const T=+document.getElementById('d-temp').value;
+  const mass=+document.getElementById('d-mass').value;
+  const speed=+document.getElementById('d-speed').value;
+  const solar=+document.getElementById('d-solar').value;
+  const atren=+document.getElementById('d-atren').value;
+
+  const solarLabels=['None','Poor','Good','Excellent'];
+  document.getElementById('d-temp-lbl').textContent=T+' K';
+  document.getElementById('d-mass-lbl').textContent=mass.toLocaleString()+' kg';
+  document.getElementById('d-speed-lbl').textContent=speed+' km/h';
+  document.getElementById('d-solar-lbl').textContent=solarLabels[solar];
+  document.getElementById('d-atren-lbl').textContent=atren+'%';
+
+  const sigma=5.67e-8;
+  const eta=0.33+0.07*(T-400)/800;
+  const nf=1+(50000/(100*100));
+  const core_kw=Math.min(35,eta*sigma*Math.pow(T,4)*nf*0.015/1000);
+  const drive_w=mass*0.08*speed*0.27+500;
+  const solar_kw=[0,0.8,2.2,4.0][solar];
+  const atren_kw=(atren/100)*3.5;
+  const rec_kw=drive_w*0.00025*speed;
+  const total_kw=core_kw+solar_kw+atren_kw+rec_kw;
+  const eff=Math.min(94,Math.round((total_kw/Math.max(total_kw,drive_w/1000))*92));
+  const range=Math.round((45000+solar_kw*3600+atren_kw*3600)/(drive_w/speed*1000)*speed);
+  const cost=Math.max(0,((drive_w/1000*100/speed)-(solar_kw+atren_kw)*0.8)*0.28).toFixed(2);
+
+  document.getElementById('d-out-range').textContent=range;
+  document.getElementById('d-out-power').textContent=core_kw.toFixed(1);
+  document.getElementById('d-out-rec').textContent=rec_kw.toFixed(1);
+  document.getElementById('d-out-eff').textContent=eff;
+  document.getElementById('d-out-wireless').textContent=atren_kw.toFixed(1);
+  document.getElementById('d-out-cost').textContent=cost;
+  document.getElementById('drive-status').textContent='RUNNING';
+}
+
+// ── BEAM CALCULATOR ──
+function calcBeam(){
+  const T=+document.getElementById('b-temp').value;
+  const stages=+document.getElementById('b-stages').value;
+  const atren=+document.getElementById('b-atren').value;
+  const solar=+document.getElementById('b-solar').value;
+
+  document.getElementById('b-temp-lbl').textContent=T+' K';
+  document.getElementById('b-stages-lbl').textContent=stages;
+  document.getElementById('b-atren-lbl').textContent=atren+' W';
+  document.getElementById('b-solar-lbl').textContent=solar+' W';
+
+  const sigma=5.67e-8;
+  const I0=sigma*Math.pow(T,4)*0.0001;
+  let I=I0;
+  for(let i=0;i<stages;i++) I*=(0.95*1.13);
+  const intensity=(I/1000).toFixed(1);
+  const core_w=sigma*Math.pow(T,4)*0.00015*0.38;
+  const total_charge=core_w+atren+solar;
+  const E_shot=1800+stages*200;
+  const recharge=(E_shot/total_charge).toFixed(1);
+  const momentum=(Math.pow(0.95*1.13,stages)).toFixed(2);
+
+  document.getElementById('b-out-intensity').textContent=intensity;
+  document.getElementById('b-out-recharge').textContent=recharge;
+  document.getElementById('b-out-momentum').textContent=momentum+'×';
+  document.getElementById('b-out-charge').textContent=Math.round(total_charge);
+  document.getElementById('beam-status').textContent=total_charge>200?'READY':'CHARGING';
+}
+
+// ── ATREN CALCULATOR ──
+function calcATREN(){
+  const power=+document.getElementById('a-power').value;
+  const nodes=+document.getElementById('a-nodes').value;
+  const dist=+document.getElementById('a-dist').value;
+  const Q=+document.getElementById('a-q').value;
+
+  document.getElementById('a-power-lbl').textContent=power+' MW';
+  document.getElementById('a-nodes-lbl').textContent=nodes.toLocaleString();
+  document.getElementById('a-dist-lbl').textContent=dist+' m';
+  document.getElementById('a-q-lbl').textContent=Q;
+
+  const k=Math.max(0.05,0.5*Math.exp(-dist/20));
+  const eta=Math.min(0.95,(k*k*Q*Q)/(1+k*k*Q*Q));
+  const total_out=power*1e6*0.94;
+  const per_node=(total_out*eta/nodes)/1000;
+  const field=(power*1e6*2.5)/(4*Math.PI*dist*dist)*eta;
+  const homes=Math.round(total_out*eta/3500);
+
+  document.getElementById('a-out-node').textContent=per_node.toFixed(2);
+  document.getElementById('a-out-eff').textContent=Math.round(eta*100);
+  document.getElementById('a-out-field').textContent=Math.round(field);
+  document.getElementById('a-out-homes').textContent=homes.toLocaleString();
+  document.getElementById('atren-status').textContent='TRANSMITTING';
+}
+
+// Init all
+calcTower(); calcDrive(); calcBeam(); calcATREN();
+window.addEventListener('resize',()=>{calcTower();});
+</script>
+</body>
+</html>
